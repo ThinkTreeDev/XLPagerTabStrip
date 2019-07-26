@@ -81,7 +81,9 @@ open class BarView: UIView {
         toFrame.origin.x = toFrame.size.width * CGFloat(toIndex)
         var targetFrame = fromFrame
         targetFrame.origin.x += (toFrame.origin.x - targetFrame.origin.x) * CGFloat(progressPercentage)
-        selectedBar.frame = targetFrame
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.selectedBar.frame = targetFrame
+        })
     }
 
     open override func layoutSubviews() {
